@@ -8,6 +8,9 @@ nikto = False                                            # Change To True if Nik
 hydra = False                                            # Change To True if Hydra Not Installed
 johnTheRipper = False                                    # Change To True if John The Ripper Not Installed
 nmap = False                                             # Change To True if Nmap Not Installed
+kaliGUI = False                                          # Change To True if you want to Install Kali GUI
+ubuntuGUI = False                                        # Change To True if you want to Install Ubuntu GUI
+
 
 
 ####### This installs Metasploit on Ubuntu #######
@@ -37,3 +40,13 @@ if johnTheRipper:
 ####### This installs Nmap on Ubuntu #######
 if nmap:
     subprocess.call("sudo apt-get -y install nmap", shell=True)
+
+
+####### This installs Kali Desktop GUI on Ubuntu #######
+if kaliGUI:
+    subprocess.call("sudo apt-get -y install kali-linux-full", shell=True)
+
+
+####### This installs Actual Ubuntu Desktop GUI on Ubuntu #######
+if ubuntuGUI:
+    subprocess.call("sudo apt-get -y install ubuntu-desktop", shell=True)
