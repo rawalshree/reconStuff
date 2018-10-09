@@ -34,6 +34,7 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+http-default-accounts-fingerprints-nndefaccts.lua
 
 # Unit test / coverage reports
 htmlcov/
