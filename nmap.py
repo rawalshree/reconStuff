@@ -3,6 +3,7 @@ import sys
 import subprocess
 import threading
 
+
 ####### Nmap Function To add List of Active Hosts on the Network #######
 def scan(ip, subnet):
     output = subprocess.check_output("sudo nmap -n -sn " + str(ip) + "/" + str(subnet) +" -oG - | awk '/Up$/{print $2}'", shell=True).strip().decode('utf-8')
@@ -39,7 +40,6 @@ def nmapCredScan():
             with open("credentials.txt", "a") as file:
                 file.write(line.rstrip('\n') + "\n" + output[output.find('\n')+1:output.rfind('\n') - 1])
                 file.write("\n====================================================================================================== \n\n\n\n")
-
 
 
 ####### For More Details visit 
