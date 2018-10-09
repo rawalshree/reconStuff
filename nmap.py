@@ -42,8 +42,10 @@ def nmapCredScan():
                 file.write("\n====================================================================================================== \n\n\n\n")
 
 
-####### For More Details visit 
-####### https://highon.coffee/blog/nmap-cheat-sheet/
+
+####### For More Details visit #######
+####### https://highon.coffee/blog/nmap-cheat-sheet/ #######
+
 if __name__ == "__main__":
     ip = str(sys.argv[1])                                  # Takes IP Address
     subnet = str(sys.argv[2])                              # Takes Subnet to Scan
