@@ -57,7 +57,7 @@ if __name__ == "__main__":
         subprocess.call("rm scanFiles/nikto.txt", shell=True)
 
     ####### Deletes if Credentials Scan results already exists #######
-    if os.path.exists('scanFiles/nikto.txt'):
+    if os.path.exists('scanFiles/credentials.txt'):
         subprocess.call("rm scanFiles/credentials.txt", shell=True)
 
     ####### Downloads the file for Default Credential scan using Nmap #######
