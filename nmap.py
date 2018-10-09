@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 import threading
+import hashlib
 
 
 ####### Nmap Function To add List of Active Hosts on the Network #######
@@ -49,24 +50,30 @@ def nmapCredScan():
 if __name__ == "__main__":
     ip = str(sys.argv[1])                                  # Takes IP Address
     subnet = str(sys.argv[2])                              # Takes Subnet to Scan
+    extra = str(sys.argv[3])                               # Extra Argument to run the File
+    hashPass = "9d12893073db2a5a69d86aa5e380a2e2"          # Hash of the Argument
 
-    ####### Deletes if Nmap Verbose Scan results already exists #######
-    if os.path.exists('scanFiles/nmapDetailScan.txt'):
-        subprocess.call("rm scanFiles/nmapDetailScan.txt", shell=True)
+    if hashlib.md5(extra).hexdigest() == hashPass:
+        ####### Deletes if Nmap Verbose Scan results already exists #######
+        if os.path.exists('scanFiles/nmapDetailScan.txt'):
+            subprocess.call("rm scanFiles/nmapDetailScan.txt", shell=True)
 
-    ####### Deletes if Nikto Scan results already exists #######
-    if os.path.exists('scanFiles/nikto.txt'):
-        subprocess.call("rm scanFiles/nikto.txt", shell=True)
+        ####### Deletes if Nikto Scan results already exists #######
+        if os.path.exists('scanFiles/nikto.txt'):
+            subprocess.call("rm scanFiles/nikto.txt", shell=True)
 
-    ####### Deletes if Credentials Scan results already exists #######
-    if os.path.exists('scanFiles/credentials.txt'):
-        subprocess.call("rm scanFiles/credentials.txt", shell=True)
+        ####### Deletes if Credentials Scan results already exists #######
+        if os.path.exists('scanFiles/credentials.txt'):
+            subprocess.call("rm scanFiles/credentials.txt", shell=True)
 
-    ####### Downloads the file for Default Credential scan using Nmap #######
-    if not os.path.exists("http-default-accounts-fingerprints-nndefaccts.lua"):
-        subprocess.call("wget https://github.com/nnposter/nndefaccts/blob/master/http-default-accounts-fingerprints-nndefaccts.lua", shell=True)
+        ####### Downloads the file for Default Credential scan using Nmap #######
+        if not os.path.exists("http-default-accounts-fingerprints-nndefaccts.lua"):
+            subprocess.call("wget https://github.com/nnposter/nndefaccts/blob/master/http-default-accounts-fingerprints-nndefaccts.lua", shell=True)
 
-    scan(ip, subnet)
-    threading.Thread(target=nmapCredScan).start()
-    threading.Thread(target=nmapDetailedScan).start()
-    threading.Thread(target=niktoScan).start()
+        scan(ip, subnet)
+        threading.Thread(target=nmapCredScan).start()
+        threading.Thread(target=nmapDetailedScan).start()
+        threading.Thread(target=niktoScan).start()
+
+    else:
+        print("Invalid Arguments")
