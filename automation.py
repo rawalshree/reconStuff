@@ -2,12 +2,12 @@ import sys
 import os
 import subprocess
 
-metasploit = False                                       # Change To False if Metasploit Already Installed
-nikto = False                                            # Change To False if Nikto Already Installed
-hydra = False                                            # Change To False if hydra Already Installed
-johnTheRipper = False                                    # Change To False if johnTheRipper Already Installed
-nmap = False                                             # Change To False if nmap Already Installed
 
+metasploit = False                                       # Change To True if Metasploit Not Installed
+nikto = False                                            # Change To True if Nikto Not Installed
+hydra = False                                            # Change To True if Hydra Not Installed
+johnTheRipper = False                                    # Change To True if John The Ripper Not Installed
+nmap = False                                             # Change To True if Nmap Not Installed
 
 
 ####### This installs Metasploit on Ubuntu #######
