@@ -81,6 +81,7 @@ if wireshark:
     subprocess.call("sudo apt-get -y install wireshark", shell=True)
 
 
+
 '''
 ####### This installs Dirbuster on Ubuntu #######
 if dirbuster:
