@@ -16,7 +16,7 @@ def scan(ip, subnet):
 def nmapDetailedScan():
     with open("scanFiles/ipList.txt", "r") as file:
         for line in file:
-            output = subprocess.check_output("sudo nmap -v -sV -O -sS -T5 " + str(line), shell=True).strip().decode('utf-8')
+            output = subprocess.check_output("sudo nmap -sC -sV -O -sS -T5 -p 1-65535 " + str(line), shell=True).strip().decode('utf-8')
             with open("scanFiles/nmapDetailScan.txt", "a") as file:
                 file.write(line.rstrip('\n') + "\n" + output[output.find('\n')+1:output.rfind('\n') - 1])
                 file.write("\n====================================================================================================== \n\n\n\n")
@@ -46,6 +46,7 @@ def nmapCredScan():
 
 ####### For More Details visit #######
 ####### https://highon.coffee/blog/nmap-cheat-sheet/ #######
+####### https://github.com/danielmiessler/SecLists  #######
 
 if __name__ == "__main__":
     ip = str(sys.argv[1])                                  # Takes IP Address
@@ -71,7 +72,7 @@ if __name__ == "__main__":
             subprocess.call("wget https://github.com/nnposter/nndefaccts/blob/master/http-default-accounts-fingerprints-nndefaccts.lua", shell=True)
 
         scan(ip, subnet)
-        threading.Thread(target=nmapCredScan).start()
+        #threading.Thread(target=nmapCredScan).start()
         threading.Thread(target=nmapDetailedScan).start()
         threading.Thread(target=niktoScan).start()
 
