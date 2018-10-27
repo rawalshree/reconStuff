@@ -13,6 +13,7 @@ kaliGUI = False                                          # Change To True if you
 ubuntuGUI = False                                        # Change To True if you want to Install Ubuntu GUI
 wireshark = False                                        # Change To True if you want to Install Wireshark
 dirbuster = False                                        # Change To True if you want to Install Dirbuster
+# WordList for dirb https://github.com/v0re/dirb/tree/master/wordlists
 burp = False                                             # Change To True if you want to Burp Suite Free Version
 #postman/editmycookie
 #ophcrack
@@ -80,13 +81,16 @@ if wireshark:
     subprocess.call("sudo apt-get -y install wireshark", shell=True)
 
 
+'''
 ####### This installs Dirbuster on Ubuntu #######
-if wireshark:
+if dirbuster:
     print("\n ####### Installing DIRBUSTER ####### \n")
+    subprocess.call("wget -o dirbuster.tar.bz2 https://netcologne.dl.sourceforge.net/project/dirbuster/DirBuster\%20\%28jar\%20\%2B\%20\lists%29/0.12/DirBuster-0.12.tar.bz2 \
+                    && sudo tar xzvf armitage.tgz", shell=True)
     subprocess.call("sudo apt-get -y install wireshark", shell=True)
 
 
-'''
+
 ####### This installs BurpSuite Free on Ubuntu #######
 if burp:
     print("\n ####### Installing BURP SUITE ####### \n")
